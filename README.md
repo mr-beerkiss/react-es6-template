@@ -17,7 +17,6 @@ Some boilerplate code for React applications using ES6 and webpack
 * Add generic support for Flux architecture
 * Production build tasks
 * Improved support for Babel 6
-* Unit testing support
 * Code coverage tools
 * Ideally configure template so that it can installed via Yeoman
 
