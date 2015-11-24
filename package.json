@@ -7,7 +7,8 @@
     "start": "webpack-dev-server",
     "lint": "npm run lint-js && npm run lint-css",
     "lint-js": "eslint . --ext .js --ext .jsx",
-    "lint-css": "csslint app --quiet"
+    "lint-css": "csslint app --quiet",
+    "tests": "karma start"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,12 @@
     "eslint-loader": "^1.1.0",
     "eslint-plugin-react": "^3.6.3",
     "html-webpack-plugin": "^1.6.2",
+    "jasmine": "^2.3.2",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-cli": "^0.1.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-webpack": "^1.7.0",
     "react-transform-hmr": "^1.0.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
