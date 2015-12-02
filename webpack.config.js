@@ -12,14 +12,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = path.resolve(__dirname);
-const APP_PATH = path.resolve(ROOT_PATH, 'app');
+const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 process.env.BABEL_ENV = TARGET;
 
 // common configuration for all lifecycle events
 const common = {
-    entry: APP_PATH,
+    entry: SRC_PATH,
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
@@ -32,7 +32,7 @@ const common = {
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
-                include: APP_PATH
+                include: SRC_PATH
             }
         ]
     },
@@ -58,19 +58,19 @@ if ( TARGET === 'start' || !TARGET ) {
                 {
                     test: /\.jsx?$/,
                     loaders: ['eslint'],
-                    include: APP_PATH
+                    include: SRC_PATH
                 },
                 {
                     test: /\.css$/,
                     loaders: ['csslint'],
-                    include: APP_PATH
+                    include: SRC_PATH
                 }
             ],
             loaders: [
                 {
                     test: /\.css$/,
                     loaders: ['style', 'css'],
-                    include: APP_PATH
+                    include: SRC_PATH
                 }
             ]
         },
@@ -83,7 +83,7 @@ if ( TARGET === 'start' || !TARGET ) {
 if ( TARGET === 'build' || TARGET === 'stats' ) {
     module.exports = merge(common, {
         entry: {
-            app: APP_PATH,
+            app: SRC_PATH,
             vendor: Object.keys(pkg.dependencies)
         },
         /* important! */
@@ -102,7 +102,7 @@ if ( TARGET === 'build' || TARGET === 'stats' ) {
                     loader: ExtractTextPlugin.extract('style', 'css'),
                     // To chain loaders using function syntax use ! operator, ie
                     // loader: ExtractTextPlugin.extract('style', 'css!autoprefixer-loader'),
-                    include: APP_PATH
+                    include: SRC_PATH
                 }
             ]
         },
